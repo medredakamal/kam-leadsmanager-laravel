@@ -11,5 +11,6 @@
         <div class="col-12 col-md-9">
             <x-leads.list />
         </div>
+        <x-ajax />
     </div>
 @endsection

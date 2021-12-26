@@ -1,16 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/js/ajax.js":
-/*!******************************!*\
-  !*** ./resources/js/ajax.js ***!
-  \******************************/
-/***/ (() => {
-
-alert("running");
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -18,8 +8,6 @@ alert("running");
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-__webpack_require__(/*! ./ajax */ "./resources/js/ajax.js");
 
 /***/ }),
 

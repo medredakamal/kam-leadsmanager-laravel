@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Leads Homepage route
+// Route : Leads Homepage route
 Route::get('/', [LeadController::class, 'index'])->name('leads.index');
+
+// ** Ajax Calls **
+
+// Get Leads
+Route::get('/leads', [LeadController::class, 'getLeads'])->name('leads.getleads');
