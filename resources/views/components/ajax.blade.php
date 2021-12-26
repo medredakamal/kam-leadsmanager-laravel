@@ -56,11 +56,18 @@
             data: addLeadData,
             type: "POST",
             success: (data) => {
-                // Load leads table
+                // Get response & message from data
+                let {
+                    res,
+                    msg
+                } = data;
+                // Load All Leads
                 loadAllLeads();
-                // Reset form
+                // Reset Add Lead Form
                 resetForm("add_lead_form");
-            },
+                // Show notification
+                $.notify(msg, res);
+                },
             error: (err) => {
                 if (!$('#add_lead_form').hasClass('was-validated')) {
                     $('#add_lead_form').addClass('was-validated')
