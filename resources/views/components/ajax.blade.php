@@ -133,16 +133,23 @@
                                 msg,
                                 res
                             } = data;
+                            // Load All Leads
                             loadAllLeads();
+                            // Clear Form Modal
                             clearModal("editLeadModal");
+                            // Hide Modal
                             editLeadModal.hide();
+                            // Show notification
+                            $.notify(msg, res);
                         },
                         error: (err) => {
                             let {
                                 errors,
                                 message
                             } = err.responseJSON;
-                            console.log(message);
+                            for (let errvalue of Object.values(errors)) {
+                                $.notify(errvalue);
+                            }
                         }
                     });
 
