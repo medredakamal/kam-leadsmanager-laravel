@@ -1,1 +1,2 @@
-require('./bootstrap');
+window.$ = require("jquery");
+require("./ajax");
