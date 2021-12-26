@@ -23,3 +23,5 @@ Route::get('/', [LeadController::class, 'index'])->name('leads.index');
 Route::get('/leads', [LeadController::class, 'getLeads'])->name('leads.getleads');
 // Add Lead
 Route::post('/leads/addlead', [LeadController::class, 'storeLead'])->name('leads.addlead');
+// Update Lead
+Route::put('/leads/updatelead', [LeadController::class, 'updateLead'])->name('leads.updatelead');

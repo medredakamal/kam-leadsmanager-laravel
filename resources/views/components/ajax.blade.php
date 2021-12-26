@@ -73,7 +73,66 @@
         });
     }
 
+    // Edit Lead
+    var editLeadModal = new bootstrap.Modal(document.getElementById('editLeadModal'), {});
+    // FUNC: edit lead
+    function editLead(e, id) {
+        e.preventDefault();
 
+        // show edit lead modal
+        editLeadModal.show();
+
+        // edit lead modal on show
+        $('#editLeadModal').on('shown.bs.modal', function() {
+            console.log('shown');
+            if ($(this).hasClass('show')) {
+                let getLeadRow;
+                getLeadRow = $(`#leads_table #${id}`);
+                let leadData = {
+                    "fullname": getLeadRow.find("td[data-name=fullname]").text().trim(),
+                    "email": getLeadRow.find("td[data-name=email]").text().trim(),
+                    "phonenumber": getLeadRow.find("td[data-name=phonenumber]").text().trim(),
+                    "location": getLeadRow.find("td[data-name=location]").text().trim()
+                }
+
+                $("#update_lead_form input[name=id]").val(id);
+                $("#update_lead_form input[name=fullname]").val(leadData.fullname);
+                $("#update_lead_form input[name=email]").val(leadData.email);
+                $("#update_lead_form input[name=phonenumber]").val(leadData.phonenumber);
+                $("#update_lead_form input[name=location]").val(leadData.location);
+
+                $("#btn_updatelead").click(function() {
+                    let updateLeadData = $("#update_lead_form").serialize();
+
+                    $.ajax({
+                        url: `{{ route('leads.updatelead') }}`,
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                        },
+                        data: updateLeadData,
+                        type: "PUT",
+                        success: (data) => {
+                            let {
+                                msg,
+                                res
+                            } = data;
+
+                            loadAllLeads();
+                        },
+                        error: (err) => {
+                            let {
+                                errors,
+                                message
+                            } = err.responseJSON;
+                            console.log(message);
+                        }
+                    });
+
+                });
+            }
+        });
+
+    }
     // Init
     loadAllLeads();
 

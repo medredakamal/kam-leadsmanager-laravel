@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{-- Loading js files before, because we have an ajax script blade file that will load before them --}}
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <title>Leads Management - Med Reda Kamal</title>
 </head>
 
