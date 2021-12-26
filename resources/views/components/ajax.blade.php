@@ -50,7 +50,8 @@
             data: addLeadData,
             type: "POST",
             success: (data) => {
-                console.log(data);
+                // Load leads table after each add
+                loadAllLeads();
             },
             error: (err) => {
                 // Before adding bootstrap validation + notifications
