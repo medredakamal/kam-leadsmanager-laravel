@@ -40,6 +40,11 @@
         });
     }
 
+    // FUNC : Reset Form
+    function resetForm(id) {
+        $(`#${id}`).trigger("reset");
+    }
+
     // FUNC: Add Lead
     function ajaxAddLead(addLeadData) {
         $.ajax({
@@ -50,8 +55,10 @@
             data: addLeadData,
             type: "POST",
             success: (data) => {
-                // Load leads table after each add
+                // Load leads table
                 loadAllLeads();
+                // Reset form
+                resetForm("add_lead_form");
             },
             error: (err) => {
                 // Before adding bootstrap validation + notifications
