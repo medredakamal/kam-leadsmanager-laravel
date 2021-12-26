@@ -15,9 +15,9 @@ If you don't have composer, install it first :
 composer install
 ```
 
-## Configure database
+# Configure database
 
-# Use .env file to setup your database
+## Use .env file to setup your database
 ```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -26,21 +26,21 @@ DB_DATABASE= HERE DATABASE NAME
 DB_USERNAME= HERE DATABASE USER
 DB_PASSWORD= HERE DATABASE PASSWORD
 ```
-# Migrate to database
+## Migrate to database
 ```bash
 php artisan migrate
 ```
-# Seed the data (Generate fake data)
+## Seed the data (Generate fake data)
 ```bash
 php artisan db:seed
 ```
 
-# Run Node Package Manager (NPM)
+## Run Node Package Manager (NPM)
 ```bash
 npm install && npm run dev
 ```
 
-# Launch the app
+## Launch the app
 ```bash
 php artisan serve
 ```
