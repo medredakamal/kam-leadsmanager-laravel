@@ -34,6 +34,12 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
+
+# Run Node Package Manager (NPM)
+```bash
+npm install && npm run dev
+```
+
 # Launch the app
 ```bash
 php artisan serve
