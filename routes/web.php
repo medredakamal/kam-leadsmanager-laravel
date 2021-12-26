@@ -25,3 +25,5 @@ Route::get('/leads', [LeadController::class, 'getLeads'])->name('leads.getleads'
 Route::post('/leads/addlead', [LeadController::class, 'storeLead'])->name('leads.addlead');
 // Update Lead
 Route::put('/leads/updatelead', [LeadController::class, 'updateLead'])->name('leads.updatelead');
+// Delete Lead
+Route::delete('/leads/deletelead', [LeadController::class, 'deleteLead'])->name('leads.deletelead');

@@ -158,6 +158,42 @@
         });
 
     }
+
+    // FUNC: Delete Lead
+    function deleteLead(e, id) {
+        e.preventDefault();
+
+        if (confirm("Are you sure ?") == true) {
+            $.ajax({
+                url: `{{ route('leads.deletelead') }}`,
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                data: {
+                    id: id
+                },
+                type: "DELETE",
+                success: (data) => {
+                    let {
+                        msg,
+                        res
+                    } = data;
+                    loadAllLeads();
+                    $.notify(msg, res);
+                },
+                error: (err) => {
+                    let {
+                        errors,
+                        message
+                    } = err.responseJSON;
+                    for (let errvalue of Object.values(errors)) {
+                        $.notify(errvalue);
+                    }
+                }
+            });
+        }
+    }
+
     // Init
     loadAllLeads();
 

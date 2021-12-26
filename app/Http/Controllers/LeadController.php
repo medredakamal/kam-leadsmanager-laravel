@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddLeadRequest;
+use App\Http\Requests\DeleteLeadRequest;
 use App\Http\Requests\UpdateLeadRequest;
 use App\Models\Lead;
 use Illuminate\Http\Request;
@@ -49,16 +50,33 @@ class LeadController extends Controller
     {
         try {
             $lead = Lead::find($updateleadrequest->id);
-            $updateleadrequest->validated();
+            if($lead) {
+                $updateleadrequest->validated();
 
-            $lead->fullname = $updateleadrequest->fullname;
-            $lead->email = $updateleadrequest->email;
-            $lead->phonenumber = $updateleadrequest->phonenumber;
-            $lead->location = $updateleadrequest->location;
+                $lead->fullname = $updateleadrequest->fullname;
+                $lead->email = $updateleadrequest->email;
+                $lead->phonenumber = $updateleadrequest->phonenumber;
+                $lead->location = $updateleadrequest->location;
 
-            $lead->update();
-            return response()->json(["res" => "success", "msg" => "Lead updated successfully !"]);
+                $lead->update();
+                return response()->json(["res" => "success", "msg" => "Lead updated successfully !"]);
+            }
+
         } catch (Exception $e) {
+            return response()->json(["res" => "error", "msg" => $e->getMessage()]);
+        }
+    }
+
+    // Delete Lead
+    public function deleteLead(DeleteLeadRequest $deleteleadrequest) {
+        try {
+            $lead = Lead::find($deleteleadrequest->id);
+            if($lead) {
+                $lead->delete();
+                return response()->json(["res" => "warning", "msg" => "Lead deleted successfully !"]);
+            }
+        }
+        catch(Exception $e) {
             return response()->json(["res" => "error", "msg" => $e->getMessage()]);
         }
     }
