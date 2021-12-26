@@ -70,12 +70,15 @@
                 },
             error: (err) => {
                 if (!$('#add_lead_form').hasClass('was-validated')) {
-                    $('#add_lead_form').addClass('was-validated')
+                        $('#add_lead_form').addClass('was-validated')
                 }
                 let {
+                    errors,
                     message
                 } = err.responseJSON;
-                console.log(message);
+                for (let [key, value] of Object.entries(errors)) {
+                    $.notify(value);
+                }
             }
         });
     }
