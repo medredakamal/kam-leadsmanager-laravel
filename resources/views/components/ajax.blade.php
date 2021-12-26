@@ -73,7 +73,14 @@
         });
     }
 
-    // Edit Lead
+    // FUNC: clear modal form
+    function clearModal(formid) {
+        let modalForm = $("#" + formid).find("form");
+        return modalForm.length > 0 ? modalForm.trigger("reset") : false;
+    }
+
+
+    // Edit Lead Modal
     var editLeadModal = new bootstrap.Modal(document.getElementById('editLeadModal'), {});
     // FUNC: edit lead
     function editLead(e, id) {
@@ -116,8 +123,9 @@
                                 msg,
                                 res
                             } = data;
-
                             loadAllLeads();
+                            clearModal("editLeadModal");
+                            editLeadModal.hide();
                         },
                         error: (err) => {
                             let {
