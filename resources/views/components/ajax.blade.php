@@ -47,6 +47,7 @@
 
     // FUNC: Add Lead
     function ajaxAddLead(addLeadData) {
+        $('#add_lead_form').removeClass('was-validated')
         $.ajax({
             url: `{{ route('leads.addlead') }}`,
             headers: {
@@ -61,7 +62,9 @@
                 resetForm("add_lead_form");
             },
             error: (err) => {
-                // Before adding bootstrap validation + notifications
+                if (!$('#add_lead_form').hasClass('was-validated')) {
+                    $('#add_lead_form').addClass('was-validated')
+                }
                 let {
                     message
                 } = err.responseJSON;
