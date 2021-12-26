@@ -21,3 +21,5 @@ Route::get('/', [LeadController::class, 'index'])->name('leads.index');
 
 // Get Leads
 Route::get('/leads', [LeadController::class, 'getLeads'])->name('leads.getleads');
+// Add Lead
+Route::post('/leads/addlead', [LeadController::class, 'storeLead'])->name('leads.addlead');
