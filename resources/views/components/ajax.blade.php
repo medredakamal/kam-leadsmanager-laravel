@@ -68,7 +68,7 @@
                 let {
                     message
                 } = err.responseJSON;
-                alert(message);
+                console.log(message);
             }
         });
     }

@@ -8,7 +8,7 @@
         <div class="valid-feedback">
         </div>
         <div class="invalid-feedback">
-            Fullname is required!
+            @lang('forms.addlead.fullname.required')
         </div>
     </div>
 
